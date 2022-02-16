@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/itemProductImage"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        tools:src="@drawable/ic_menu"
+        tools:tint="@color/black"
+        android:scaleType="centerInside"
+        />
+
+    <LinearLayout
+        android:layout_marginStart="22dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/itemProductTitle"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            tools:text="Ветчина и грибы" />
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:id="@+id/itemProductDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Ветчина,шампиньоны, увеличинная порция моцареллы, томатный соус" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginTop="8dp"
+            android:layout_gravity="end"
+            android:id="@+id/itemProductBuyButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textAllCaps="false"
+            android:textSize="13sp"
+            tools:text="от 345 р"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
