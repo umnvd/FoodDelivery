@@ -1,11 +1,9 @@
-package com.umnvd.fooddelivery.ui
+package com.umnvd.fooddelivery.screens
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.umnvd.fooddelivery.R
 import com.umnvd.fooddelivery.databinding.FragmentMainBinding

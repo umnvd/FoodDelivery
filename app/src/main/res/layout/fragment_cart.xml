@@ -4,6 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:text="Cart"
-    android:textSize="48sp"
-    tools:context=".ui.CartFragment" />
+    android:text="@string/cart"
+    android:textSize="72sp"
+    tools:context=".screens.CartFragment" />

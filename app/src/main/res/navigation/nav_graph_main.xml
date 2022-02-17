@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.umnvd.fooddelivery.ui.MenuFragment"
+        android:name="com.umnvd.fooddelivery.screens.menu.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.umnvd.fooddelivery.ui.ProfileFragment"
+        android:name="com.umnvd.fooddelivery.screens.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.umnvd.fooddelivery.ui.CartFragment"
+        android:name="com.umnvd.fooddelivery.screens.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
 </navigation>

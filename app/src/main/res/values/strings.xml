@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">FoodDelivery</string>
     <string name="large_text">Asdf, asdfasdf asdfasdfasdf asdf, asdf! Asdf, asdfasdf asdfasdfasdf asdf, asdf! Asdf, asdfasdf asdfasdfasdf asdf, asdf! Asdf, asdfasdf asdfasdfasdf asdf, asdf! Asdf, asdfasdf asdfasdfasdf asdf, asdf! Asdf, asdfasdf asdfasdfasdf asdf, asdf! Asdf, asdfasdf asdfasdfasdf asdf, asdf!</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="menu">Menu</string>
 </resources>
