@@ -1,11 +1,11 @@
 package com.umnvd.fooddelivery.data
 
-import android.util.Log
+import com.umnvd.fooddelivery.models.Category
 import com.umnvd.fooddelivery.models.Product
 
 interface ProductsRepository {
 
-    fun getAvailableCategories(cityName: String): List<String>
+    fun getAvailableCategories(cityName: String): List<Category>
 
     suspend fun getProductsByCategory(category: String): List<Product>
 
@@ -13,33 +13,28 @@ interface ProductsRepository {
 
 class TestProductsRepository: ProductsRepository {
 
-    private val categories = hashMapOf<String, List<String>>()
+    private val categories = listOf(
+        Category("Beef", 0L),
+        Category("Dessert", 1L),
+        Category("Seafood", 2L),
+        Category("Chicken", 3L),
+        Category("Lamb", 4L),
+        Category("Pork", 5L),
+        Category("Starter", 6L),
+        Category("Breakfast", 7L),
+        Category("Goat", 8L),
+        Category("Pasta", 9L),
+        Category("Side", 10L),
+        Category("Vegan", 11L),
+    )
+    private val availableCategories = mapOf(
+        "Moscow" to categories.slice(0..2),
+        "Nizhnevartovsk" to categories.slice(3..6),
+        "Ulyanovsk" to categories.slice(7..11)
+    )
 
-    init {
-        categories["Moscow"] = listOf(
-            "Beef",
-            "Dessert",
-            "Seafood"
-        )
-
-        categories["Nizhnevartovsk"] = listOf(
-            "Chicken",
-            "Lamb",
-            "Pork",
-            "Starter"
-        )
-
-        categories["Ulyanovsk"] = listOf(
-            "Breakfast",
-            "Goat",
-            "Pasta",
-            "Side",
-            "Vegan"
-        )
-    }
-
-    override fun getAvailableCategories(cityName: String): List<String> {
-        return categories.getValue(cityName)
+    override fun getAvailableCategories(cityName: String): List<Category> {
+        return availableCategories.getValue(cityName)
     }
 
     override suspend fun getProductsByCategory(category: String): List<Product> {

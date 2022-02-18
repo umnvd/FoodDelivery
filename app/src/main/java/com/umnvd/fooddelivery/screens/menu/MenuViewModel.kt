@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.umnvd.fooddelivery.data.*
 import com.umnvd.fooddelivery.models.Ad
+import com.umnvd.fooddelivery.models.Category
 import com.umnvd.fooddelivery.models.Product
 import com.umnvd.fooddelivery.screens.extentions.share
 import kotlinx.coroutines.launch
@@ -22,7 +23,7 @@ class MenuViewModel : ViewModel() {
     private val _cities: MutableLiveData<List<String>> = MutableLiveData(citiesRepository.getCities())
     val cities = _cities.share()
 
-    private val _categories: MutableLiveData<List<String>>  = MutableLiveData()
+    private val _categories: MutableLiveData<List<Category>>  = MutableLiveData()
     val categories = _categories.share()
 
 

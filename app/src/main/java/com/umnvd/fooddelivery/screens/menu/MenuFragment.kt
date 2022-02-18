@@ -75,6 +75,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
                 position: Int, id: Long
             ) {
                 citiesAdapter.getItem(position)?.let(viewModel::setCurrentCity)
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.umnvd.fooddelivery.R
 import com.umnvd.fooddelivery.databinding.FragmentProductsPageBinding
+import com.umnvd.fooddelivery.models.Category
 import com.umnvd.fooddelivery.screens.menu.adapters.ProductsAdapter
 
 class ProductsPageFragment: Fragment(R.layout.fragment_products_page) {
@@ -23,9 +24,10 @@ class ProductsPageFragment: Fragment(R.layout.fragment_products_page) {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         }
 
-        arguments?.getString(CATEGORY_KEY)?.let {
-            viewModel.loadProductsByCategory(it)
-            viewModel.getProductsByCategory(it).observe(viewLifecycleOwner, productsAdapter::setProducts)
+        arguments?.getParcelable<Category>(CATEGORY_KEY)?.let {
+            viewModel.loadProductsByCategory(it.name)
+            viewModel.getProductsByCategory(it.name)
+                .observe(viewLifecycleOwner, productsAdapter::setProducts)
         }
     }
 

@@ -8,13 +8,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.umnvd.fooddelivery.R
+import com.umnvd.fooddelivery.models.Category
 
 typealias OnTabSelectedListener = (pagePosition: Int, tabScrollPosition: Int) -> Unit
 
 class CategoryTabsAdapter : RecyclerView.Adapter<CategoryTabsAdapter.ViewHolder>() {
 
     private var selectedPosition: Int = 0
-    private var categories: List<String> = listOf()
+    private var categories: List<Category> = listOf()
     private var listener: OnTabSelectedListener? = null
 
     override fun getItemCount(): Int = categories.size
@@ -41,11 +42,11 @@ class CategoryTabsAdapter : RecyclerView.Adapter<CategoryTabsAdapter.ViewHolder>
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(categories[holder.adapterPosition])
+        holder.bind(categories[holder.adapterPosition].name)
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setCategories(newCategories: List<String>) {
+    fun setCategories(newCategories: List<Category>) {
         categories = newCategories
         notifyDataSetChanged()
     }
