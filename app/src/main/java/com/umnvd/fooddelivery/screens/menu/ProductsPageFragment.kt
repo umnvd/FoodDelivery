@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.umnvd.fooddelivery.R
@@ -23,6 +24,7 @@ class ProductsPageFragment : Fragment(R.layout.fragment_products_page) {
         with(binding.root) {
             adapter = productsAdapter
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
         }
 
         arguments?.getParcelable<Category>(CATEGORY_KEY)?.let {
