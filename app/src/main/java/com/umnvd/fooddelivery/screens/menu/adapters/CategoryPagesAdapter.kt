@@ -18,7 +18,7 @@ class CategoryPagesAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
     }
 
     override fun containsItem(itemId: Long): Boolean {
-        return categories.find { it.id == itemId } == null
+        return categories.find { it.id == itemId } != null
     }
 
     override fun createFragment(position: Int): Fragment {

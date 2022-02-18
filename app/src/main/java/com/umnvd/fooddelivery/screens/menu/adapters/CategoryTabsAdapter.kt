@@ -34,15 +34,15 @@ class CategoryTabsAdapter : RecyclerView.Adapter<CategoryTabsAdapter.ViewHolder>
         val holder = ViewHolder(view)
 
         view.setOnClickListener {
-            listener?.invoke(holder.adapterPosition, getScrollPosition(holder.adapterPosition))
-            onPageChanged(holder.adapterPosition)
+            listener?.invoke(holder.bindingAdapterPosition, getScrollPosition(holder.bindingAdapterPosition))
+            onPageChanged(holder.bindingAdapterPosition)
         }
 
         return holder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(categories[holder.adapterPosition].name)
+        holder.bind(categories[holder.bindingAdapterPosition].name)
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -67,7 +67,6 @@ class CategoryTabsAdapter : RecyclerView.Adapter<CategoryTabsAdapter.ViewHolder>
 
     private fun getScrollPosition(position: Int): Int {
         val range = position - selectedPosition
-        Log.e("", "$selectedPosition -> $position")
         val signedStep = when {
             range < 0 -> -1
             range > 0 -> 1

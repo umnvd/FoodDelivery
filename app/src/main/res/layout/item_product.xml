@@ -14,6 +14,7 @@
         android:layout_gravity="center"
         android:scaleType="centerCrop"
         tools:src="@drawable/ic_menu"
+        android:contentDescription="@string/product_image"
         tools:tint="?colorPrimary" />
 
     <LinearLayout
@@ -47,6 +48,7 @@
             android:layout_width="87dp"
             android:layout_height="32dp"
             android:layout_gravity="end"
+            android:layout_marginTop="@dimen/margin_s"
             android:background="?selectableItemBackground"
             android:foreground="@drawable/ic_button"
             android:foregroundTint="?colorPrimary"

@@ -10,13 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.umnvd.fooddelivery.R
 import com.umnvd.fooddelivery.databinding.FragmentMenuBinding
+import com.umnvd.fooddelivery.screens.ViewModelsFactory
 import com.umnvd.fooddelivery.screens.extentions.toast
 import com.umnvd.fooddelivery.screens.menu.adapters.*
 import com.umnvd.fooddelivery.screens.menu.decoration.OffsetItemDecoration
 
 class MenuFragment : Fragment(R.layout.fragment_menu) {
 
-    private val viewModel: MenuViewModel by viewModels()
+    private val viewModel: MenuViewModel by viewModels { ViewModelsFactory() }
     private lateinit var binding: FragmentMenuBinding
     private val categoryTabsAdapter = CategoryTabsAdapter()
 
@@ -75,7 +76,6 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
                 position: Int, id: Long
             ) {
                 citiesAdapter.getItem(position)?.let(viewModel::setCurrentCity)
-
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -117,6 +117,9 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         viewModel.categories.observe(viewLifecycleOwner) {
             categoryPagesAdapter.setCategories(it)
             categoryTabsAdapter.setCategories(it)
+
+            binding.menuPager.currentItem = 0
+            binding.menuTabsRecycler.scrollToPosition(0)
         }
     }
 

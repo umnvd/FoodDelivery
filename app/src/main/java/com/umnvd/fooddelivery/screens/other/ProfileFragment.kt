@@ -1,4 +1,4 @@
-package com.umnvd.fooddelivery.screens
+package com.umnvd.fooddelivery.screens.other
 
 import androidx.fragment.app.Fragment
 import com.umnvd.fooddelivery.R

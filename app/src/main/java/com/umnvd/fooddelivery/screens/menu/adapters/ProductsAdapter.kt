@@ -4,11 +4,14 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.umnvd.fooddelivery.R
 import com.umnvd.fooddelivery.databinding.ItemProductBinding
 import com.umnvd.fooddelivery.models.Product
 import com.umnvd.fooddelivery.screens.extentions.toast
 
-class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
+class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
     private var products: List<Product> = listOf()
 
@@ -27,10 +30,10 @@ class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
         with(binding) {
             root.setOnClickListener {
-                it.context.toast(products[holder.adapterPosition].name)
+                it.context.toast(products[holder.bindingAdapterPosition].name)
             }
             itemProductBuyButton.setOnClickListener {
-                it.context.toast("Buy ${products[holder.adapterPosition].name}")
+                it.context.toast("Buy ${products[holder.bindingAdapterPosition].name}")
             }
         }
 
@@ -43,12 +46,21 @@ class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
     class ViewHolder(
         private val binding: ItemProductBinding
-    ): RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(product: Product) {
             with(binding) {
                 itemProductTitle.text = product.name
                 itemProductDescription.text = product.description
+                itemProductBuyButton.text = root.context.getString(R.string.price_rub, product.price)
+
+                Glide.with(itemProductImage)
+                    .load(product.imageUrl)
+                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                    .placeholder(R.drawable.product_placeholder)
+                    .error(R.drawable.product_placeholder)
+                    .centerCrop()
+                    .into(itemProductImage)
             }
         }
 

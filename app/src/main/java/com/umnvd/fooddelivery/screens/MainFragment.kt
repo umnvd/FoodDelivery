@@ -8,7 +8,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.umnvd.fooddelivery.R
 import com.umnvd.fooddelivery.databinding.FragmentMainBinding
 
-class MainFragment: Fragment(R.layout.fragment_main) {
+class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

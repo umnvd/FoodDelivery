@@ -1,17 +1,23 @@
 package com.umnvd.fooddelivery.data
 
+import com.umnvd.fooddelivery.data.products.ProductsApiService
+import com.umnvd.fooddelivery.data.products.THUMBNAIL_PATH
 import com.umnvd.fooddelivery.models.Category
 import com.umnvd.fooddelivery.models.Product
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 interface ProductsRepository {
 
     fun getAvailableCategories(cityName: String): List<Category>
 
-    suspend fun getProductsByCategory(category: String): List<Product>
+    suspend fun getProductsByCategory(category: Category): List<Product>
 
 }
 
-class TestProductsRepository: ProductsRepository {
+class ProductsRepositoryImpl(
+    private val productsApiService: ProductsApiService
+) : ProductsRepository {
 
     private val categories = listOf(
         Category("Beef", 0L),
@@ -37,17 +43,22 @@ class TestProductsRepository: ProductsRepository {
         return availableCategories.getValue(cityName)
     }
 
-    override suspend fun getProductsByCategory(category: String): List<Product> {
-        val result = mutableListOf<Product>()
-        for (i in category.indices) {
-            result.add(Product(
-                    category + i,
-                "$category$i description...",
-                "",
-                i
-                ))
+    override suspend fun getProductsByCategory(category: Category): List<Product> =
+        withContext(Dispatchers.IO) {
+            return@withContext productsApiService
+                .getProductsByCategory(category.name)
+                .responseArray
+                .take(5)
+                .map { Product(
+                    name = it.name,
+                    imageUrl = it.imageUrl + THUMBNAIL_PATH,
+                    price = (it.id % 100).toInt(),
+                    description = productsApiService
+                        .getProductDetails(it.id)
+                        .responseArray
+                        .first()
+                        .description
+                ) }
         }
-        return result
-    }
 
 }
