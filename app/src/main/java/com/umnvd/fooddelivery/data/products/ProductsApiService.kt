@@ -1,6 +1,5 @@
 package com.umnvd.fooddelivery.data.products
 
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 

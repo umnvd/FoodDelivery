@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/margin_s"
-    android:orientation="horizontal"
     android:background="?selectableItemBackground"
-    xmlns:tools="http://schemas.android.com/tools" >
+    android:orientation="horizontal"
+    android:padding="@dimen/margin_small">
 
     <TextView
         android:id="@+id/itemCityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Moscow"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
+        android:textAppearance="@style/TextAppearance.App.Title"
+        tools:text="Moscow" />
 
     <ImageView
         android:id="@+id/itemCityArrow"
-        android:layout_marginStart="@dimen/margin_s"
         android:layout_width="@dimen/spinner_arrow_size"
         android:layout_height="@dimen/spinner_arrow_size"
         android:layout_gravity="end"
+        android:layout_marginStart="@dimen/margin_small"
+        android:contentDescription="@string/arrow"
         android:src="@drawable/ic_arrow_down"
         app:tint="@color/black" />
 

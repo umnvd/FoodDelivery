@@ -2,16 +2,17 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
-    android:layout_height="112dp"
-    android:elevation="10dp"
+    android:layout_width="@dimen/banner_width"
+    android:layout_height="@dimen/banner_height"
+    android:elevation="@dimen/elevation"
     android:foreground="?selectableItemBackground"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="@dimen/banner_corner_radius">
 
     <ImageView
         android:id="@+id/itemBannerImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/ad_banner"
         android:scaleType="centerCrop"
         tools:src="@drawable/ad_placeholder" />
 

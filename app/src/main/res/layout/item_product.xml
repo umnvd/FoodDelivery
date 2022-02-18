@@ -5,22 +5,22 @@
     android:layout_height="wrap_content"
     android:background="?selectableItemBackground"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="@dimen/margin_large">
 
     <ImageView
         android:id="@+id/itemProductImage"
-        android:layout_width="135dp"
-        android:layout_height="135dp"
+        android:layout_width="@dimen/product_image_size"
+        android:layout_height="@dimen/product_image_size"
         android:layout_gravity="center"
+        android:contentDescription="@string/product_image"
         android:scaleType="centerCrop"
         tools:src="@drawable/ic_menu"
-        android:contentDescription="@string/product_image"
         tools:tint="?colorPrimary" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
+        android:layout_marginStart="@dimen/margin_product_image_text"
         android:orientation="vertical">
 
         <TextView
@@ -28,33 +28,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.App.Title"
             tools:text="Ветчина и грибы" />
 
         <TextView
             android:id="@+id/itemProductDescription"
             android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="@dimen/product_description_height"
+            android:layout_marginTop="@dimen/margin_small"
             android:ellipsize="end"
             android:maxLines="4"
-            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.App.Regular"
             tools:text="Ветчина,шампиньоны, увеличинная порция моцареллы, томатный соус" />
 
         <TextView
             android:id="@+id/itemProductBuyButton"
-            android:layout_width="87dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/buy_button_width"
+            android:layout_height="@dimen/buy_button_height"
             android:layout_gravity="end"
-            android:layout_marginTop="@dimen/margin_s"
+            android:layout_marginTop="@dimen/margin_small"
             android:background="?selectableItemBackground"
             android:foreground="@drawable/ic_button"
             android:foregroundTint="?colorPrimary"
             android:gravity="center"
-            android:textColor="?colorPrimary"
-            android:textSize="13sp"
+            android:textAppearance="@style/TextAppearance.App.Button"
             tools:text="от 345 р" />
 
 

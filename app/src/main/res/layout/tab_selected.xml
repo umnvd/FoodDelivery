@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/category_tab_width"
     android:layout_height="@dimen/category_tab_height"
-    android:elevation="10dp"
+    android:elevation="@dimen/elevation"
     android:foreground="?selectableItemBackground"
-    app:cardCornerRadius="6dp">
+    app:cardCornerRadius="@dimen/category_tab_corner_radius">
 
     <TextView
         android:id="@+id/tabText"
@@ -15,7 +15,7 @@
         android:background="@color/pink_alpha20"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="?colorPrimary"
+        android:textAppearance="@style/TextAppearance.App.Button"
         android:maxLines="1"
         android:ellipsize="end"
         tools:text="Пицца" />

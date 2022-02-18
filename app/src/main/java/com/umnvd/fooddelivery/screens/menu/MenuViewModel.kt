@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.umnvd.fooddelivery.data.*
+import com.umnvd.fooddelivery.data.AdsRepository
+import com.umnvd.fooddelivery.data.CitiesRepository
+import com.umnvd.fooddelivery.data.ProductsRepository
 import com.umnvd.fooddelivery.models.Ad
 import com.umnvd.fooddelivery.models.Category
 import com.umnvd.fooddelivery.models.Product
@@ -28,7 +30,8 @@ class MenuViewModel(
     val categories = _categories.share()
 
 
-    private val productsByCategory: MutableMap<Category, MutableLiveData<List<Product>>> = hashMapOf()
+    private val productsByCategory: MutableMap<Category, MutableLiveData<List<Product>>> =
+        hashMapOf()
 
     fun setCurrentCity(cityName: String) {
         _categories.value = productsRepository.getAvailableCategories(cityName)

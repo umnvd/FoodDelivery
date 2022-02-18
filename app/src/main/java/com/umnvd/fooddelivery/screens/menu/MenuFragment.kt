@@ -58,7 +58,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             layoutManager = LinearLayoutManager(
                 requireContext(), RecyclerView.HORIZONTAL, false
             )
-            val offset = context.resources.getDimensionPixelSize(R.dimen.margin_m)
+            val offset = context.resources.getDimensionPixelSize(R.dimen.margin_large)
             addItemDecoration(
                 OffsetItemDecoration(offset, offset)
             )
@@ -106,8 +106,8 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             menuTabsRecycler.layoutManager = LinearLayoutManager(
                 requireContext(), RecyclerView.HORIZONTAL, false
             )
-            val outerOffset = requireContext().resources.getDimensionPixelSize(R.dimen.margin_m)
-            val innerOffset = requireContext().resources.getDimensionPixelSize(R.dimen.margin_s)
+            val outerOffset = requireContext().resources.getDimensionPixelSize(R.dimen.margin_large)
+            val innerOffset = requireContext().resources.getDimensionPixelSize(R.dimen.margin_small)
             menuTabsRecycler.addItemDecoration(
                 OffsetItemDecoration(outerOffset, innerOffset)
             )

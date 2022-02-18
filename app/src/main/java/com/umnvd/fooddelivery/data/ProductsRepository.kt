@@ -49,16 +49,18 @@ class ProductsRepositoryImpl(
                 .getProductsByCategory(category.name)
                 .responseArray
                 .take(5)
-                .map { Product(
-                    name = it.name,
-                    imageUrl = it.imageUrl + THUMBNAIL_PATH,
-                    price = (it.id % 100).toInt(),
-                    description = productsApiService
-                        .getProductDetails(it.id)
-                        .responseArray
-                        .first()
-                        .description
-                ) }
+                .map {
+                    Product(
+                        name = it.name,
+                        imageUrl = it.imageUrl + THUMBNAIL_PATH,
+                        price = (it.id % 100).toInt(),
+                        description = productsApiService
+                            .getProductDetails(it.id)
+                            .responseArray
+                            .first()
+                            .description
+                    )
+                }
         }
 
 }

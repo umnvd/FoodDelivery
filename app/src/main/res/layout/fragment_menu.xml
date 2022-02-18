@@ -33,16 +33,16 @@
                 android:id="@+id/menuToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
+                android:background="?colorSurface"
                 app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin"
-                android:background="?colorSurface"
                 tools:background="#00ffff">
 
                 <Spinner
                     android:id="@+id/menuCitiesSpinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_s"
+                    android:layout_marginStart="@dimen/margin_small"
                     android:background="@null"
                     android:spinnerMode="dropdown"
                     tools:listitem="@layout/item_city" />
@@ -52,8 +52,9 @@
                     android:layout_width="@dimen/qr_scan_button_size"
                     android:layout_height="@dimen/qr_scan_button_size"
                     android:layout_gravity="end"
-                    android:layout_marginEnd="@dimen/margin_m"
+                    android:layout_marginEnd="@dimen/margin_large"
                     android:background="?selectableItemBackground"
+                    android:contentDescription="@string/scan_qr_button"
                     android:src="@drawable/ic_qr"
                     app:tint="@color/black" />
 
@@ -70,12 +71,6 @@
             tools:orientation="horizontal" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
-<!--    <androidx.fragment.app.FragmentContainerView-->
-<!--        android:id="@+id/menuContainer"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/menuPager"

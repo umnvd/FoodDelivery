@@ -5,4 +5,7 @@
     <string name="menu">Menu</string>
     <string name="price_rub">from %1$d RUB</string>
     <string name="product_image">Product image</string>
+    <string name="ad_banner">Ad banner</string>
+    <string name="arrow">Drop down list arrow</string>
+    <string name="scan_qr_button">Scan qr button</string>
 </resources>

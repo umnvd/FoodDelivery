@@ -1,7 +1,6 @@
 package com.umnvd.fooddelivery.screens.menu.adapters
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +33,10 @@ class CategoryTabsAdapter : RecyclerView.Adapter<CategoryTabsAdapter.ViewHolder>
         val holder = ViewHolder(view)
 
         view.setOnClickListener {
-            listener?.invoke(holder.bindingAdapterPosition, getScrollPosition(holder.bindingAdapterPosition))
+            listener?.invoke(
+                holder.bindingAdapterPosition,
+                getScrollPosition(holder.bindingAdapterPosition)
+            )
             onPageChanged(holder.bindingAdapterPosition)
         }
 

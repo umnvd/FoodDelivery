@@ -52,7 +52,8 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
             with(binding) {
                 itemProductTitle.text = product.name
                 itemProductDescription.text = product.description
-                itemProductBuyButton.text = root.context.getString(R.string.price_rub, product.price)
+                itemProductBuyButton.text =
+                    root.context.getString(R.string.price_rub, product.price)
 
                 Glide.with(itemProductImage)
                     .load(product.imageUrl)
