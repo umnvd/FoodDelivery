@@ -5,7 +5,8 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 class OffsetItemDecoration(
-    private val offset: Int,
+    private val outerOffset: Int,
+    private val innerOffset: Int,
 ): RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
@@ -15,21 +16,21 @@ class OffsetItemDecoration(
         state: RecyclerView.State
     ) {
         val lastIndex = parent.adapter?.itemCount?.minus(1) ?: 0
-        outRect.top = offset
-        outRect.bottom = offset
+        outRect.top = outerOffset
+        outRect.bottom = outerOffset
 
         when(parent.getChildAdapterPosition(view)) {
             0 -> {
-                outRect.right = offset / 2
-                outRect.left = offset
+                outRect.right = innerOffset / 2
+                outRect.left = outerOffset
             }
             lastIndex -> {
-                outRect.right = offset
-                outRect.left = offset / 2
+                outRect.right = outerOffset
+                outRect.left = innerOffset / 2
             }
             else -> {
-                outRect.right = offset / 2
-                outRect.left = offset / 2
+                outRect.right = innerOffset / 2
+                outRect.left = innerOffset / 2
             }
         }
     }

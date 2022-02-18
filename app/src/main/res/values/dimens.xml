@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="banners_recycler_height">144dp</dimen>
-    <dimen name="categories_tabs_height">64dp</dimen>
+    <dimen name="ads_recycler_height">144dp</dimen>
+    <dimen name="category_tabs_height">64dp</dimen>
     <dimen name="qr_scan_button_size">24dp</dimen>
     <dimen name="margin_m">16dp</dimen>
     <dimen name="spinner_arrow_size">24dp</dimen>
     <dimen name="margin_s">8dp</dimen>
+    <dimen name="category_tab_width">88dp</dimen>
+    <dimen name="category_tab_height">32dp</dimen>
 </resources>

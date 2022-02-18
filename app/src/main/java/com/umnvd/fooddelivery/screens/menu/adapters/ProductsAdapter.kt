@@ -8,7 +8,7 @@ import com.umnvd.fooddelivery.databinding.ItemProductBinding
 import com.umnvd.fooddelivery.models.Product
 import com.umnvd.fooddelivery.screens.extentions.toast
 
-class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>() {
+class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
     private var products: List<Product> = listOf()
 
@@ -20,10 +20,10 @@ class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>(
 
     override fun getItemCount(): Int = products.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemProductBinding.inflate(inflater, parent, false)
-        val holder = ProductsViewHolder(binding)
+        val holder = ViewHolder(binding)
 
         with(binding) {
             root.setOnClickListener {
@@ -37,11 +37,11 @@ class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>(
         return holder
     }
 
-    override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(products[position])
     }
 
-    class ProductsViewHolder(
+    class ViewHolder(
         private val binding: ItemProductBinding
     ): RecyclerView.ViewHolder(binding.root) {
 

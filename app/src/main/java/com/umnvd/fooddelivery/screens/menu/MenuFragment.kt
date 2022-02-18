@@ -1,35 +1,52 @@
 package com.umnvd.fooddelivery.screens.menu
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.tabs.TabLayoutMediator
+import androidx.viewpager2.widget.ViewPager2
 import com.umnvd.fooddelivery.R
 import com.umnvd.fooddelivery.databinding.FragmentMenuBinding
 import com.umnvd.fooddelivery.screens.extentions.toast
-import com.umnvd.fooddelivery.screens.menu.adapters.AdsAdapter
-import com.umnvd.fooddelivery.screens.menu.adapters.CategoryPagesAdapter
-import com.umnvd.fooddelivery.screens.menu.adapters.CitiesAdapter
+import com.umnvd.fooddelivery.screens.menu.adapters.*
 import com.umnvd.fooddelivery.screens.menu.decoration.OffsetItemDecoration
 
 class MenuFragment : Fragment(R.layout.fragment_menu) {
 
     private val viewModel: MenuViewModel by viewModels()
     private lateinit var binding: FragmentMenuBinding
+    private val categoryTabsAdapter = CategoryTabsAdapter()
+
+    private val onPageChangeCallback: ViewPager2.OnPageChangeCallback =
+        object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                categoryTabsAdapter.onPageChanged(position)
+                binding.menuTabsRecycler.scrollToPosition(position)
+            }
+        }
+
+    private val onTabSelectedListener: OnTabSelectedListener =
+        { pagePosition, tabScrollPosition ->
+            binding.menuPager.setCurrentItem(pagePosition, true)
+            binding.menuTabsRecycler.scrollToPosition(tabScrollPosition)
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentMenuBinding.bind(view)
 
         setUpAds()
         setUpToolbar()
-        setUpProductsPager()
+        setUpMenu()
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.menuPager.unregisterOnPageChangeCallback(onPageChangeCallback)
+        categoryTabsAdapter.removeOnTabSelectedListener()
     }
 
     private fun setUpAds() {
@@ -40,10 +57,9 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             layoutManager = LinearLayoutManager(
                 requireContext(), RecyclerView.HORIZONTAL, false
             )
+            val offset = context.resources.getDimensionPixelSize(R.dimen.margin_m)
             addItemDecoration(
-                OffsetItemDecoration(
-                    context.resources.getDimensionPixelSize(R.dimen.margin_m)
-                )
+                OffsetItemDecoration(offset, offset)
             )
             setHasFixedSize(true)
         }
@@ -76,25 +92,30 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         viewModel.cities.observe(viewLifecycleOwner, citiesAdapter::setCities)
     }
 
-    private fun setUpProductsPager() {
+    private fun setUpMenu() {
         val categoryPagesAdapter = CategoryPagesAdapter(this)
 
         with(binding) {
             menuPager.adapter = categoryPagesAdapter
-            TabLayoutMediator(
-                menuTabs,
-                menuPager,
-                true
-            ) { tab, position ->
-                tab.setCustomView(R.layout.tab_category)
-                tab.text = categoryPagesAdapter.getCategoryName(position)
-            }.attach()
+            menuPager.registerOnPageChangeCallback(onPageChangeCallback)
+
+            menuTabsRecycler.adapter = categoryTabsAdapter.apply {
+                setOnTabSelectedListener(onTabSelectedListener)
+            }
+            menuTabsRecycler.layoutManager = LinearLayoutManager(
+                requireContext(), RecyclerView.HORIZONTAL, false
+            )
+            val outerOffset = requireContext().resources.getDimensionPixelSize(R.dimen.margin_m)
+            val innerOffset = requireContext().resources.getDimensionPixelSize(R.dimen.margin_s)
+            menuTabsRecycler.addItemDecoration(
+                OffsetItemDecoration(outerOffset, innerOffset)
+            )
+            menuTabsRecycler.setHasFixedSize(true)
         }
 
-//        viewModel.categories.observe(viewLifecycleOwner, categoryPagesAdapter::setCategories)
         viewModel.categories.observe(viewLifecycleOwner) {
             categoryPagesAdapter.setCategories(it)
-            binding.menuPager.setCurrentItem(2, false)
+            categoryTabsAdapter.setCategories(it)
         }
     }
 

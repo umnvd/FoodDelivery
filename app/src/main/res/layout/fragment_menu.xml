@@ -23,7 +23,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/menuBannersRecycler"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/banners_recycler_height"
+                android:layout_height="@dimen/ads_recycler_height"
                 android:layout_marginTop="?actionBarSize"
                 app:layout_collapseMode="none"
                 tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -61,15 +61,13 @@
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/menuTabs"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/menuTabsRecycler"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/categories_tabs_height"
+            android:layout_height="@dimen/category_tabs_height"
             tools:background="#ffff00"
-            app:tabIndicator="@null"
-            app:tabUnboundedRipple="true"
-            app:tabGravity="fill"
-            app:tabMode="auto" />
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:orientation="horizontal" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

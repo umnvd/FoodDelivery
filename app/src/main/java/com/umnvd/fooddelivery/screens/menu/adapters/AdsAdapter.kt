@@ -11,7 +11,7 @@ import com.umnvd.fooddelivery.databinding.ItemBannerBinding
 import com.umnvd.fooddelivery.models.Ad
 import com.umnvd.fooddelivery.screens.extentions.toast
 
-class AdsAdapter : RecyclerView.Adapter<AdsAdapter.AdsViewHolder>() {
+class AdsAdapter : RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
 
     private var ads: List<Ad> = listOf()
 
@@ -23,21 +23,21 @@ class AdsAdapter : RecyclerView.Adapter<AdsAdapter.AdsViewHolder>() {
 
     override fun getItemCount(): Int = ads.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemBannerBinding.inflate(inflater, parent, false)
-        val holder = AdsViewHolder(binding)
+        val holder = ViewHolder(binding)
         binding.root.setOnClickListener {
             it.context.toast(ads[holder.adapterPosition].description)
         }
         return holder
     }
 
-    override fun onBindViewHolder(holder: AdsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(ads[position])
     }
 
-    class AdsViewHolder(
+    class ViewHolder(
         private val binding: ItemBannerBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 

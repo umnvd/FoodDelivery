@@ -19,7 +19,6 @@ class TestProductsRepository: ProductsRepository {
         categories["Moscow"] = listOf(
             "Beef",
             "Dessert",
-            "Miscellaneous",
             "Seafood"
         )
 
@@ -40,7 +39,6 @@ class TestProductsRepository: ProductsRepository {
     }
 
     override fun getAvailableCategories(cityName: String): List<String> {
-        Log.e("", categories.keys.toString())
         return categories.getValue(cityName)
     }
 
